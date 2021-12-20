@@ -19,6 +19,13 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+
+	UFUNCTION(BlueprintCallable, Category = "_RebelRobot | PlayerMovement")
+		void RRMoveForward(const float ValoreAvanti);
+
+	UFUNCTION(BlueprintCallable, Category = "_RebelRobot | PlayerMovement")
+		void RRMoveRight(const float ValoreDestro);
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;

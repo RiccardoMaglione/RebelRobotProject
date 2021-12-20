@@ -18,6 +18,14 @@ void ARebelRobotCharacter::BeginPlay()
 	
 }
 
+void ARebelRobotCharacter::RRMoveForward(const float ValoreAvanti)
+{
+}
+
+void ARebelRobotCharacter::RRMoveRight(const float ValoreDestro)
+{
+}
+
 // Called every frame
 void ARebelRobotCharacter::Tick(float DeltaTime)
 {
