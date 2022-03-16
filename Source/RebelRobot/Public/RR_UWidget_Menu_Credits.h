@@ -6,6 +6,8 @@
 #include "Blueprint/UserWidget.h"
 #include "RR_UWidget_Menu_Credits.generated.h"
 
+class URR_UWidget_Menu_Main;
+
 /**
  * 
  */
@@ -15,4 +17,16 @@ class REBELROBOT_API URR_UWidget_Menu_Credits : public UUserWidget
 	GENERATED_BODY()
 	
 	virtual bool Initialize();
+
+	UPROPERTY(meta = (BindWidget))
+		class UButton* Button_Back;
+	UPROPERTY(meta = (BindWidget))
+		class UButton* Button_Exit;
+
+	UFUNCTION()
+		void BackExitButtonClicked();
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RM | UI")
+		TSubclassOf<URR_UWidget_Menu_Main> MainWidget;
 };
