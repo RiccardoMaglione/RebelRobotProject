@@ -4,23 +4,23 @@
 #include "RR_UWidget_Menu_Main.h"
 #include "Components/Button.h"
 #include "Kismet/GameplayStatics.h"
-//#include "GameFramework/GameUserSettings.h"
+#include "GameFramework/GameUserSettings.h"
 
 bool URR_UWidget_Menu_Main::Initialize()
 {
 	Super::Initialize();
 
-	//UGameUserSettings* TempGameUserSettings = UGameUserSettings::GetGameUserSettings();
-	//TempGameUserSettings->LoadSettings();
-	//if (TempGameUserSettings->GetFullscreenMode() == EWindowMode::Fullscreen) {
-	//	TempGameUserSettings->SetFullscreenMode(EWindowMode::Fullscreen);
-	//	TempGameUserSettings->SetScreenResolution(TempGameUserSettings->GetDesktopResolution());
-	//	TempGameUserSettings->ApplySettings(false);
-	//	TempGameUserSettings->SaveSettings();
-	//}
-	//if (TempGameUserSettings->GetFullscreenMode() == EWindowMode::Windowed || TempGameUserSettings->GetFullscreenMode() == EWindowMode::WindowedFullscreen) {
-	//	TempGameUserSettings->SetFullscreenMode(EWindowMode::Windowed);
-	//}
+	UGameUserSettings* TempGameUserSettings = UGameUserSettings::GetGameUserSettings();
+	TempGameUserSettings->LoadSettings();
+	if (TempGameUserSettings->GetFullscreenMode() == EWindowMode::Fullscreen) {
+		TempGameUserSettings->SetFullscreenMode(EWindowMode::Fullscreen);
+		TempGameUserSettings->SetScreenResolution(TempGameUserSettings->GetDesktopResolution());
+	}
+	if (TempGameUserSettings->GetFullscreenMode() == EWindowMode::Windowed || TempGameUserSettings->GetFullscreenMode() == EWindowMode::WindowedFullscreen) {
+		TempGameUserSettings->SetFullscreenMode(EWindowMode::Windowed);
+	}
+	TempGameUserSettings->ApplySettings(false);
+	TempGameUserSettings->SaveSettings();
 
 	Button_Play->OnClicked.AddDynamic(this, &URR_UWidget_Menu_Main::PlayButtonClicked);
 	Button_Option->OnClicked.AddDynamic(this, &URR_UWidget_Menu_Main::OptionButtonClicked);
