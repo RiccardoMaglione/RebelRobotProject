@@ -23,6 +23,11 @@ class REBELROBOT_API URR_UWidget_Menu_Option : public UUserWidget
 	UPROPERTY(meta = (BindWidget))
 		class UButton* Button_Exit;
 
+	UPROPERTY(meta = (BindWidget))
+		class USlider* Slider_Brightness;
+
+	UFUNCTION()
+		void BrightnessSliderOnValueChanged(float Value);
 	UFUNCTION()
 		void BackExitButtonClicked();
 
