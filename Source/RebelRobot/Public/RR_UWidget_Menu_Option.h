@@ -25,9 +25,13 @@ class REBELROBOT_API URR_UWidget_Menu_Option : public UUserWidget
 
 	UPROPERTY(meta = (BindWidget))
 		class USlider* Slider_Brightness;
+	UPROPERTY(meta = (BindWidget))
+		class UCheckBox* CheckBox_Fullscreen;
 
 	UFUNCTION()
 		void BrightnessSliderOnValueChanged(float Value);
+	UFUNCTION()
+		void FullscreenCheckBoxClicked(bool isChecked);
 	UFUNCTION()
 		void BackExitButtonClicked();
 

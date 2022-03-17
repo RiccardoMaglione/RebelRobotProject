@@ -4,10 +4,24 @@
 #include "RR_UWidget_Menu_Main.h"
 #include "Components/Button.h"
 #include "Kismet/GameplayStatics.h"
+#include "GameFramework/GameUserSettings.h"
 
 bool URR_UWidget_Menu_Main::Initialize()
 {
 	Super::Initialize();
+
+	//UGameUserSettings* TempGameUserSettings = UGameUserSettings::GetGameUserSettings();
+	//TempGameUserSettings->LoadSettings();
+	//if (TempGameUserSettings->GetFullscreenMode() == EWindowMode::Fullscreen) {
+	//	TempGameUserSettings->SetFullscreenMode(EWindowMode::Fullscreen);
+	//	TempGameUserSettings->SetScreenResolution(TempGameUserSettings->GetDesktopResolution());
+	//	TempGameUserSettings->ApplySettings(false);
+	//	TempGameUserSettings->SaveSettings();
+	//}
+	//if (TempGameUserSettings->GetFullscreenMode() == EWindowMode::Windowed || TempGameUserSettings->GetFullscreenMode() == EWindowMode::WindowedFullscreen) {
+	//	TempGameUserSettings->SetFullscreenMode(EWindowMode::Windowed);
+	//}
+
 	Button_Play->OnClicked.AddDynamic(this, &URR_UWidget_Menu_Main::PlayButtonClicked);
 	Button_Option->OnClicked.AddDynamic(this, &URR_UWidget_Menu_Main::OptionButtonClicked);
 	Button_Credits->OnClicked.AddDynamic(this, &URR_UWidget_Menu_Main::CreditsButtonClicked);
