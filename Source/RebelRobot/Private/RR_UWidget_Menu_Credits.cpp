@@ -4,6 +4,7 @@
 #include "RR_UWidget_Menu_Credits.h"
 #include "Components/Button.h"
 #include "RR_UWidget_Menu_Main.h"
+#include "TimerManager.h"
 
 bool URR_UWidget_Menu_Credits::Initialize()
 {
@@ -17,9 +18,13 @@ bool URR_UWidget_Menu_Credits::Initialize()
 
 void URR_UWidget_Menu_Credits::BackExitButtonClicked()
 {
-	RemoveFromParent();
-	if (MainWidget != nullptr) {
-		URR_UWidget_Menu_Main* MainWidgetTemp = CreateWidget<URR_UWidget_Menu_Main>(GetWorld(), MainWidget);
-		MainWidgetTemp->AddToViewport();
-	}
+	FTimerHandle TimerHandle;
+	GetWorld()->GetTimerManager().SetTimer(TimerHandle, [&]()
+		{
+			RemoveFromParent();
+			if (MainWidget != nullptr) {
+				URR_UWidget_Menu_Main* MainWidgetTemp = CreateWidget<URR_UWidget_Menu_Main>(GetWorld(), MainWidget);
+				MainWidgetTemp->AddToViewport();
+			}
+		}, 0.9f, false);
 }
