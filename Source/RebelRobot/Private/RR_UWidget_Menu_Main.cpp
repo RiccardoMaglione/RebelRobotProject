@@ -47,11 +47,14 @@ void URR_UWidget_Menu_Main::OptionButtonClicked()
 
 void URR_UWidget_Menu_Main::CreditsButtonClicked()
 {
-	RemoveFromParent();
-	if (CreditsWidget != nullptr) {
-		URR_UWidget_Menu_Credits* CreditsWidgetTemp = CreateWidget<URR_UWidget_Menu_Credits>(GetWorld(), CreditsWidget);
-		CreditsWidgetTemp->AddToViewport();
-	}
+	//RemoveFromParent();
+	//if (CreditsWidget != nullptr) {
+	//	URR_UWidget_Menu_Credits* CreditsWidgetTemp = CreateWidget<URR_UWidget_Menu_Credits>(GetWorld(), CreditsWidget);
+	//	CreditsWidgetTemp->AddToViewport();
+	//}
+
+	//Play Animation of a variables c++ with reference animation of blueprint
+	//UUserWidget::PlayAnimation(TestFadeBind);
 }
 
 void URR_UWidget_Menu_Main::ControlsButtonClicked()

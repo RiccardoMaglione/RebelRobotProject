@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "Animation/WidgetAnimation.h"
 #include "RR_UWidget_Menu_Controls.h"
 #include "RR_UWidget_Menu_Credits.h"
 #include "RR_UWidget_Menu_Option.h"
@@ -48,4 +49,8 @@ public:
 		TSubclassOf<URR_UWidget_Menu_Credits> CreditsWidget;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RM | UI")
 		TSubclassOf<URR_UWidget_Menu_Controls> ControlsWidget;
+
+	//Da aggiungere per richiamare le animazioni del blueprint da codice
+	//UPROPERTY(Transient, BlueprintReadWrite, meta = (BindWidgetAnim), Category = "RM | UI | Animation")
+	//	UWidgetAnimation* TestFadeBind;
 };
