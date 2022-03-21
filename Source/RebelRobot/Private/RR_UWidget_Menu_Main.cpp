@@ -38,11 +38,11 @@ void URR_UWidget_Menu_Main::PlayButtonClicked()
 
 void URR_UWidget_Menu_Main::OptionButtonClicked()
 {
-	RemoveFromParent();
-	if (OptionWidget != nullptr) {
-		URR_UWidget_Menu_Option* OptionWidgetTemp = CreateWidget<URR_UWidget_Menu_Option>(GetWorld(), OptionWidget);
-		OptionWidgetTemp->AddToViewport();
-	}
+	//RemoveFromParent();
+	//if (OptionWidget != nullptr) {
+	//	URR_UWidget_Menu_Option* OptionWidgetTemp = CreateWidget<URR_UWidget_Menu_Option>(GetWorld(), OptionWidget);
+	//	OptionWidgetTemp->AddToViewport();
+	//}
 }
 
 void URR_UWidget_Menu_Main::CreditsButtonClicked()
@@ -59,11 +59,11 @@ void URR_UWidget_Menu_Main::CreditsButtonClicked()
 
 void URR_UWidget_Menu_Main::ControlsButtonClicked()
 {
-	RemoveFromParent();
-	if (ControlsWidget != nullptr) {
-		URR_UWidget_Menu_Controls* ControlsWidgetTemp = CreateWidget<URR_UWidget_Menu_Controls>(GetWorld(), ControlsWidget);
-		ControlsWidgetTemp->AddToViewport();
-	}
+	//RemoveFromParent();
+	//if (ControlsWidget != nullptr) {
+	//	URR_UWidget_Menu_Controls* ControlsWidgetTemp = CreateWidget<URR_UWidget_Menu_Controls>(GetWorld(), ControlsWidget);
+	//	ControlsWidgetTemp->AddToViewport();
+	//}
 }
 
 void URR_UWidget_Menu_Main::QuitButtonClicked()
