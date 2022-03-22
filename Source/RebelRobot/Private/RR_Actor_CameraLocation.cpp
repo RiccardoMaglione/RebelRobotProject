@@ -26,5 +26,7 @@ void ARR_Actor_CameraLocation::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	LocationRef->SetWorldLocation(GetWorld()->GetFirstPlayerController()->GetPawn()->GetActorLocation());			//Set world location of LocationRef to Player location
+	if (GetWorld() != nullptr && GetWorld()->GetFirstPlayerController() != nullptr && GetWorld()->GetFirstPlayerController()->GetPawn() != nullptr) {
+		LocationRef->SetWorldLocation(GetWorld()->GetFirstPlayerController()->GetPawn()->GetActorLocation());			//Set world location of LocationRef to Player location
+	}
 }
