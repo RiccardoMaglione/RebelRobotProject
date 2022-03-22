@@ -5,5 +5,6 @@
 
 bool URR_UWidget_Menu_Pause::Initialize()
 {
+	Super::Initialize();
 	return true;
 }
