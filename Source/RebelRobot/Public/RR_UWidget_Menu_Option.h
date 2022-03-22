@@ -6,6 +6,8 @@
 #include "Blueprint/UserWidget.h"
 #include "RR_UWidget_Menu_Option.generated.h"
 
+class URR_UWidget_Menu_Main;
+
 /**
  * 
  */
@@ -15,4 +17,25 @@ class REBELROBOT_API URR_UWidget_Menu_Option : public UUserWidget
 	GENERATED_BODY()
 	
 	virtual bool Initialize();
+
+	UPROPERTY(meta = (BindWidget))
+		class UButton* Button_Back;
+	UPROPERTY(meta = (BindWidget))
+		class UButton* Button_Exit;
+
+	UPROPERTY(meta = (BindWidget))
+		class USlider* Slider_Brightness;
+	UPROPERTY(meta = (BindWidget))
+		class UCheckBox* CheckBox_Fullscreen;
+
+	UFUNCTION()
+		void BrightnessSliderOnValueChanged(float Value);
+	UFUNCTION()
+		void FullscreenCheckBoxClicked(bool isChecked);
+	UFUNCTION()
+		void BackExitButtonClicked();
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RM | UI")
+		TSubclassOf<URR_UWidget_Menu_Main> MainWidget;
 };
