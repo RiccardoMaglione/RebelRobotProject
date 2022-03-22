@@ -6,5 +6,7 @@
 
 bool URR_UWidget_Menu_Victory::Initialize()
 {
+	Super::Initialize();
+
 	return true;
 }

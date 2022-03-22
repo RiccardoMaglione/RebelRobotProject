@@ -6,5 +6,6 @@
 
 bool URR_UWidget_Menu_GameOver::Initialize()
 {
+    Super::Initialize();
     return true;
 }
