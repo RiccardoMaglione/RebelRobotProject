@@ -32,8 +32,8 @@ bool URR_UWidget_Menu_Main::Initialize()
 
 void URR_UWidget_Menu_Main::PlayButtonClicked()
 {
-	RemoveFromParent();
-	UGameplayStatics::OpenLevel(GetWorld(), "AILevel");
+	//RemoveFromParent();
+	//UGameplayStatics::OpenLevel(GetWorld(), "AILevel");
 }
 
 void URR_UWidget_Menu_Main::OptionButtonClicked()
