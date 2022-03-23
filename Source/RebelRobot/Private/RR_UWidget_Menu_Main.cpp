@@ -68,5 +68,5 @@ void URR_UWidget_Menu_Main::ControlsButtonClicked()
 
 void URR_UWidget_Menu_Main::QuitButtonClicked()
 {
-	GetWorld()->GetFirstPlayerController()->ConsoleCommand("quit");
+	//GetWorld()->GetFirstPlayerController()->ConsoleCommand("quit");
 }
