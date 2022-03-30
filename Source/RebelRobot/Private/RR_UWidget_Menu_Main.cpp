@@ -5,6 +5,10 @@
 #include "Components/Button.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/GameUserSettings.h"
+#include "Components/Slider.h"
+#include "Kismet/GameplayStatics.h"
+#include "Engine/PostProcessVolume.h"
+#include "Components/CheckBox.h"
 
 bool URR_UWidget_Menu_Main::Initialize()
 {
@@ -15,58 +19,50 @@ bool URR_UWidget_Menu_Main::Initialize()
 	if (TempGameUserSettings->GetFullscreenMode() == EWindowMode::Fullscreen) {
 		TempGameUserSettings->SetFullscreenMode(EWindowMode::Fullscreen);
 		TempGameUserSettings->SetScreenResolution(TempGameUserSettings->GetDesktopResolution());
+		CheckBox_Fullscreen->CheckedState = ECheckBoxState::Checked;
 	}
 	if (TempGameUserSettings->GetFullscreenMode() == EWindowMode::Windowed || TempGameUserSettings->GetFullscreenMode() == EWindowMode::WindowedFullscreen) {
 		TempGameUserSettings->SetFullscreenMode(EWindowMode::Windowed);
+		CheckBox_Fullscreen->CheckedState = ECheckBoxState::Unchecked;
 	}
 	TempGameUserSettings->ApplySettings(false);
 	TempGameUserSettings->SaveSettings();
 
-	Button_Play->OnClicked.AddDynamic(this, &URR_UWidget_Menu_Main::PlayButtonClicked);
-	Button_Option->OnClicked.AddDynamic(this, &URR_UWidget_Menu_Main::OptionButtonClicked);
-	Button_Credits->OnClicked.AddDynamic(this, &URR_UWidget_Menu_Main::CreditsButtonClicked);
-	Button_Controls->OnClicked.AddDynamic(this, &URR_UWidget_Menu_Main::ControlsButtonClicked);
-	Button_Quit->OnClicked.AddDynamic(this, &URR_UWidget_Menu_Main::QuitButtonClicked);
+	CheckBox_Fullscreen->OnCheckStateChanged.AddDynamic(this, &URR_UWidget_Menu_Main::FullscreenCheckBoxClicked);
+	Slider_Brightness->OnValueChanged.AddDynamic(this, &URR_UWidget_Menu_Main::BrightnessSliderOnValueChanged);
+
+	Button_Quit_Yes->OnClicked.AddDynamic(this, &URR_UWidget_Menu_Main::QuitButtonClicked);
 	return true;
 }
 
-void URR_UWidget_Menu_Main::PlayButtonClicked()
-{
-	//RemoveFromParent();
-	//UGameplayStatics::OpenLevel(GetWorld(), "AILevel");
-}
-
-void URR_UWidget_Menu_Main::OptionButtonClicked()
-{
-	//RemoveFromParent();
-	//if (OptionWidget != nullptr) {
-	//	URR_UWidget_Menu_Option* OptionWidgetTemp = CreateWidget<URR_UWidget_Menu_Option>(GetWorld(), OptionWidget);
-	//	OptionWidgetTemp->AddToViewport();
-	//}
-}
-
-void URR_UWidget_Menu_Main::CreditsButtonClicked()
-{
-	//RemoveFromParent();
-	//if (CreditsWidget != nullptr) {
-	//	URR_UWidget_Menu_Credits* CreditsWidgetTemp = CreateWidget<URR_UWidget_Menu_Credits>(GetWorld(), CreditsWidget);
-	//	CreditsWidgetTemp->AddToViewport();
-	//}
-
-	//Play Animation of a variables c++ with reference animation of blueprint
-	//UUserWidget::PlayAnimation(TestFadeBind);
-}
-
-void URR_UWidget_Menu_Main::ControlsButtonClicked()
-{
-	//RemoveFromParent();
-	//if (ControlsWidget != nullptr) {
-	//	URR_UWidget_Menu_Controls* ControlsWidgetTemp = CreateWidget<URR_UWidget_Menu_Controls>(GetWorld(), ControlsWidget);
-	//	ControlsWidgetTemp->AddToViewport();
-	//}
-}
 
 void URR_UWidget_Menu_Main::QuitButtonClicked()
 {
-	//GetWorld()->GetFirstPlayerController()->ConsoleCommand("quit");
+	GetWorld()->GetFirstPlayerController()->ConsoleCommand("quit");
+}
+
+void URR_UWidget_Menu_Main::BrightnessSliderOnValueChanged(float Value)
+{
+	AActor* PPV = UGameplayStatics::GetActorOfClass(GetWorld(), APostProcessVolume::StaticClass());
+	if (PPV != nullptr) {
+		APostProcessVolume* PPVCasted = Cast<APostProcessVolume>(PPV);
+		PPVCasted->Settings.AutoExposureMinBrightness = Value + 0.01;
+		PPVCasted->Settings.AutoExposureMaxBrightness = Value - 0.01;
+	}
+}
+
+void URR_UWidget_Menu_Main::FullscreenCheckBoxClicked(bool isChecked)
+{
+	GetWorld()->GetFirstPlayerController()->ConsoleCommand("fullscreen");
+
+	UGameUserSettings* TempGameUserSettings = UGameUserSettings::GetGameUserSettings();
+	if (CheckBox_Fullscreen->CheckedState == ECheckBoxState::Checked) {
+		TempGameUserSettings->SetFullscreenMode(EWindowMode::Fullscreen);
+		TempGameUserSettings->SetScreenResolution(TempGameUserSettings->GetDesktopResolution());
+	}
+	if (CheckBox_Fullscreen->CheckedState == ECheckBoxState::Unchecked) {
+		TempGameUserSettings->SetFullscreenMode(EWindowMode::Windowed);
+	}
+	TempGameUserSettings->ApplySettings(false);
+	TempGameUserSettings->SaveSettings();
 }
