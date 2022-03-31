@@ -29,18 +29,19 @@ class REBELROBOT_API URR_UWidget_Menu_Main : public UUserWidget
 	UPROPERTY(meta = (BindWidget))
 		class UButton* Button_Controls;
 	UPROPERTY(meta = (BindWidget))
-		class UButton* Button_Quit;
+		class UButton* Button_Quit_Yes;
+
+	UPROPERTY(meta = (BindWidget))
+		class USlider* Slider_Brightness;
+	UPROPERTY(meta = (BindWidget))
+		class UCheckBox* CheckBox_Fullscreen;
 
 	UFUNCTION()
-		void PlayButtonClicked();
-	UFUNCTION()
-		void OptionButtonClicked();
-	UFUNCTION()
-		void CreditsButtonClicked();
-	UFUNCTION()
-		void ControlsButtonClicked();
-	UFUNCTION()
 		void QuitButtonClicked();
+	UFUNCTION()
+		void BrightnessSliderOnValueChanged(float Value);
+	UFUNCTION()
+		void FullscreenCheckBoxClicked(bool isChecked);
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RM | UI")
