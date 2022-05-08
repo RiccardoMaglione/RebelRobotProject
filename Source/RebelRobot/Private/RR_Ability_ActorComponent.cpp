@@ -30,5 +30,33 @@ void URR_Ability_ActorComponent::TickComponent(float DeltaTime, ELevelTick TickT
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	// ...
+
+	if (bAC_CanLaunch_BlackHole) {
+		fAC_Temp_CD_BlackHole = fAC_Cooldown_BlackHole;
+	}
+	else {
+		fAC_Temp_CD_BlackHole = fAC_Cooldown_BlackHole - UGameplayStatics::GetWorldDeltaSeconds(GetWorld());
+	}
+
+	if (bAC_CanLaunch_Dash) {
+		fAC_Temp_CD_Dash = fAC_Cooldown_Dash;
+	}
+	else {
+		fAC_Temp_CD_Dash = fAC_Cooldown_Dash - UGameplayStatics::GetWorldDeltaSeconds(GetWorld());
+	}
+
+	if (bAC_CanLaunch_Shield) {
+		fAC_Temp_CD_Shield = fAC_Cooldown_Shield;
+	}
+	else {
+		fAC_Temp_CD_Shield = fAC_Cooldown_Shield - UGameplayStatics::GetWorldDeltaSeconds(GetWorld());
+	}
+
+	if (bAC_CanLaunch_ShockWave) {
+		fAC_Temp_CD_ShockWave = fAC_Temp_CD_ShockWave;
+	}
+	else {
+		fAC_Temp_CD_ShockWave = fAC_Temp_CD_ShockWave - UGameplayStatics::GetWorldDeltaSeconds(GetWorld());
+	}
 }
 

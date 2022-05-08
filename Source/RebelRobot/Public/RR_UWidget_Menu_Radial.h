@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "Kismet/GameplayStatics.h"
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "RR_UWidget_Menu_Radial.generated.h"
@@ -69,8 +70,23 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
 		class UImage* Image_ShockWave;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
+		class UImage* Image_Dash_BordoGiallo;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
+		class UImage* Image_Shield_BordoGiallo;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
+		class UImage* Image_BlackHole_BordoGiallo;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
+		class UImage* Image_ShockWave_BordoGiallo;
 
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
+		class UCanvasPanel* CanvasPanel_Blackhole;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
+		class UCanvasPanel* CanvasPanel_Circle;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
+		class UTextBlock* TextBlock_Ability;
 
 	UFUNCTION(BlueprintCallable, Category = "RR | Radial")
 		void Radial_HoverDelegate();
@@ -94,5 +110,17 @@ public:
 		void Radial_BlackHoleUnhovered();
 	UFUNCTION(BlueprintCallable, Category = "RR | Radial")
 		void Radial_ShockWaveUnhovered();
+
+	UFUNCTION(BlueprintCallable, Category = "RR | Radial")
+		void Radial_FuncAbilitySelected();
+
+	UFUNCTION(BlueprintCallable, Category = "RR | Radial")
+		void Radial_FuncDashSelected();
+	UFUNCTION(BlueprintCallable, Category = "RR | Radial")
+		void Radial_FuncShieldSelected();
+	UFUNCTION(BlueprintCallable, Category = "RR | Radial")
+		void Radial_FuncBlackHoleSelected();
+	UFUNCTION(BlueprintCallable, Category = "RR | Radial")
+		void Radial_FuncShockWaveSelected();
 
 };
