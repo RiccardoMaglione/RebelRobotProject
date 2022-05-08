@@ -2,6 +2,10 @@
 
 #pragma once
 
+#include "RR_UWidget_Menu_Radial.h"
+#include "RR_UWidget_Menu_Gameplay.h"
+#include "Kismet/GameplayStatics.h"
+#include "RR_GameInstance.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "RR_PlayerCharacter.generated.h"
@@ -24,6 +28,26 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;	
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Input")
+		bool bInputIsGamepad;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Widget")
+		TSubclassOf<URR_UWidget_Menu_Radial> Class_BP_RadialWidget;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Widget")
+		TSubclassOf<URR_UWidget_Menu_Gameplay> Class_BP_GameplayWidget;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Widget")
+		URR_UWidget_Menu_Radial* RadialWidgeta;										//Private
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Widget")
+		URR_UWidget_Menu_Gameplay* GameplayWidget;									//Private
+
+	UFUNCTION(BlueprintCallable, Category = "RR | Input")
+		void AnyKeyDelegate(FKey key);
+
+	UFUNCTION(BlueprintCallable, Category = "RR | Widget")
+		void CreateRadialWidget();
+	UFUNCTION(BlueprintCallable, Category = "RR | Widget")
+		void CreateGameplayWidget();
 };

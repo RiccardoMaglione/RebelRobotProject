@@ -3,3 +3,9 @@
 
 #include "RR_PlayerController.h"
 
+void ARR_PlayerController::BeginPlay()
+{
+	Super::BeginPlay();
+
+	CurrentMouseCursor = EMouseCursor::Crosshairs;
+}
