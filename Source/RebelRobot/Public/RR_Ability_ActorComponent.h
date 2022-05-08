@@ -26,29 +26,43 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Ability")
-		float fAC_Cooldown_Dash;
+		float fAC_Cooldown_Dash = 2.0f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Ability")
-		float fAC_Cooldown_Shield;
+		float fAC_Cooldown_Shield = 10.0f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Ability")
-		float fAC_Cooldown_BlackHole;
+		float fAC_Cooldown_BlackHole = 15.0f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Ability")
-		float fAC_Cooldown_ShockWave;
+		float fAC_Cooldown_ShockWave = 4.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Ability")
-		float fAC_Temp_CD_Dash;
+		float fAC_Temp_CD_Dash = 2.0f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Ability")
-		float fAC_Temp_CD_Shield;
+		float fAC_Temp_CD_Shield = 10.0f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Ability")
-		float fAC_Temp_CD_BlackHole;
+		float fAC_Temp_CD_BlackHole = 15.0f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Ability")
-		float fAC_Temp_CD_ShockWave;
+		float fAC_Temp_CD_ShockWave = 4.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Ability")
-		bool bAC_CanLaunch_Dash;
+		bool bAC_CanLaunch_Dash = true;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Ability")
-		bool bAC_CanLaunch_Shield;
+		bool bAC_CanLaunch_Shield = true;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Ability")
-		bool bAC_CanLaunch_BlackHole;
+		bool bAC_CanLaunch_BlackHole = true;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Ability")
-		bool bAC_CanLaunch_ShockWave;
+		bool bAC_CanLaunch_ShockWave = true;
+
+
+
+	UFUNCTION(BlueprintCallable, Category = "RR | Ability")
+		float Func_Ability_ShockWave(TSubclassOf<AActor> WaveAreaLarge, TSubclassOf<AActor> WaveAreaSmall);
+
+	UFUNCTION(BlueprintCallable, Category = "RR | Ability")
+		float Func_Ability_BlackHole(FTransform SpawnTransform, TSubclassOf<AActor> BlackHoleProjectile);
+
+	UFUNCTION(BlueprintCallable, Category = "RR | Ability")
+		float Func_Ability_Shield(TSubclassOf<AActor> BPShield);
+
+	UFUNCTION(BlueprintCallable, Category = "RR | Ability")
+		void dffddf();
 };
