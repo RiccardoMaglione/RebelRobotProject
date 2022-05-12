@@ -20,13 +20,14 @@ class REBELROBOT_API URR_UWidget_Menu_Main : public UUserWidget
 	
 	virtual bool Initialize();
 
-	UPROPERTY(meta = (BindWidget))
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
 		class UButton* Button_Play;
-	UPROPERTY(meta = (BindWidget))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
 		class UButton* Button_Option;
-	UPROPERTY(meta = (BindWidget))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
 		class UButton* Button_Credits;
-	UPROPERTY(meta = (BindWidget))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
 		class UButton* Button_Controls;
 	UPROPERTY(meta = (BindWidget))
 		class UButton* Button_Quit_Yes;
@@ -43,7 +44,6 @@ class REBELROBOT_API URR_UWidget_Menu_Main : public UUserWidget
 	UFUNCTION()
 		void FullscreenCheckBoxClicked(bool isChecked);
 
-public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RM | UI")
 		TSubclassOf<URR_UWidget_Menu_Option> OptionWidget;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RM | UI")

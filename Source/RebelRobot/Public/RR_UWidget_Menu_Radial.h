@@ -50,7 +50,23 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
 		FSlateBrush InBrush_NotSelected;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FSlateBrush InBrush_Dash_Icon;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FSlateBrush InBrush_Shield_Icon;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FSlateBrush InBrush_BlackHole_Icon;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FSlateBrush InBrush_ShockWave_Icon;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FSlateBrush InBrush_Dash_Icon_Hover;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FSlateBrush InBrush_Shield_Icon_Hover;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FSlateBrush InBrush_BlackHole_Icon_Hover;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FSlateBrush InBrush_ShockWave_Icon_Hover;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
 		class UButton* Button_Dash;
@@ -78,6 +94,15 @@ public:
 		class UImage* Image_BlackHole_BordoGiallo;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
 		class UImage* Image_ShockWave_BordoGiallo;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
+		class UImage* Image_Dash_Icon;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
+		class UImage* Image_Shield_Icon;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
+		class UImage* Image_BlackHole_Icon;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
+		class UImage* Image_ShockWave_Icon;
 
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))

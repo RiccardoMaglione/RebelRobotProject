@@ -37,6 +37,7 @@ void URR_UWidget_Menu_Radial::Radial_HoverDelegate()
 void URR_UWidget_Menu_Radial::Radial_DashHover()
 {
     Image_Dash->SetBrush(InBrush_Dash_Selected);
+    Image_Dash_Icon->SetBrush(InBrush_Dash_Icon_Hover);
     bHover_BlackHole_Selected = false;
     bHover_Shield_Selected = false;
     bHover_ShockWave_Selected = false;
@@ -46,6 +47,7 @@ void URR_UWidget_Menu_Radial::Radial_DashHover()
 void URR_UWidget_Menu_Radial::Radial_ShieldHover()
 {
     Image_Shield->SetBrush(InBrush_Shield_Selected);
+    Image_Shield_Icon->SetBrush(InBrush_Shield_Icon_Hover);
     bHover_Dash_Selected = false;
     bHover_BlackHole_Selected = false;
     bHover_ShockWave_Selected = false;
@@ -55,6 +57,7 @@ void URR_UWidget_Menu_Radial::Radial_ShieldHover()
 void URR_UWidget_Menu_Radial::Radial_BlakcHoleHover()
 {
     Image_BlackHole->SetBrush(InBrush_BlackHole_Selected);
+    Image_BlackHole_Icon->SetBrush(InBrush_BlackHole_Icon_Hover);
     bHover_Dash_Selected = false;
     bHover_Shield_Selected = false;
     bHover_ShockWave_Selected = false;
@@ -64,6 +67,7 @@ void URR_UWidget_Menu_Radial::Radial_BlakcHoleHover()
 void URR_UWidget_Menu_Radial::Radial_ShockWaveHover()
 {
     Image_ShockWave->SetBrush(InBrush_ShockWave_Selected);
+    Image_ShockWave_Icon->SetBrush(InBrush_ShockWave_Icon_Hover);
     bHover_Dash_Selected = false;
     bHover_Shield_Selected = false;
     bHover_BlackHole_Selected = false;
@@ -76,14 +80,16 @@ void URR_UWidget_Menu_Radial::Radial_DashUnhovered()
 {
     if (!bDash_Selected) {
         Image_Dash->UImage::SetBrush(InBrush_NotSelected);
+        Image_Dash_Icon->UImage::SetBrush(InBrush_Dash_Icon);
         bHover_Dash_Selected = false;
     }
-}
+}        
 
 void URR_UWidget_Menu_Radial::Radial_ShieldUnhovered()
 {
     if (!bShield_Selected) {
         Image_Shield->UImage::SetBrush(InBrush_NotSelected);
+        Image_Shield_Icon->UImage::SetBrush(InBrush_Shield_Icon);
         bHover_Shield_Selected = false;
     }
 }
@@ -92,6 +98,7 @@ void URR_UWidget_Menu_Radial::Radial_BlackHoleUnhovered()
 {
     if (!bBlackHole_Selected) {
         Image_BlackHole->UImage::SetBrush(InBrush_NotSelected);
+        Image_BlackHole_Icon->UImage::SetBrush(InBrush_BlackHole_Icon);
         bHover_BlackHole_Selected = false;
     }
 }
@@ -100,6 +107,7 @@ void URR_UWidget_Menu_Radial::Radial_ShockWaveUnhovered()
 {
     if (!bShockWave_Selected) {
         Image_ShockWave->UImage::SetBrush(InBrush_NotSelected);
+        Image_ShockWave_Icon->UImage::SetBrush(InBrush_ShockWave_Icon);
         bHover_ShockWave_Selected = false;
     }
 }
@@ -141,6 +149,8 @@ void URR_UWidget_Menu_Radial::Radial_FuncDashSelected()
     Image_Dash->UImage::SetRenderScale(FVector2D(1.0f,1.0f));
     Image_Dash->UImage::SetRenderTranslation(FVector2D(0.0f, 0.0f));
     
+    Image_Dash_Icon->SetBrush(InBrush_Dash_Icon_Hover);
+
     FString base = "Dash\nEFFECT: Lorem Ipsum\nCOOLDOWN: ";
     //FString sCooldownValue = FString::SanitizeFloat(Cast<ARR_PlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0))->RR_AbilityComponent->fAC_Cooldown_Dash);
     FString sCooldownValue = FString::SanitizeFloat(2.0f);
@@ -165,6 +175,10 @@ void URR_UWidget_Menu_Radial::Radial_FuncDashSelected()
     Image_BlackHole->UImage::SetBrush(InBrush_NotSelected);
     Image_Shield->UImage::SetBrush(InBrush_NotSelected);
 
+    Image_Shield_Icon->UImage::SetBrush(InBrush_Shield_Icon);
+    Image_BlackHole_Icon->UImage::SetBrush(InBrush_BlackHole_Icon);
+    Image_ShockWave_Icon->UImage::SetBrush(InBrush_ShockWave_Icon);
+
     CanvasPanel_Circle->UCanvasPanel::SetRenderTransformAngle(0.0f);
 
     Cast<ARR_PlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0))->iAbilityIndex = 2;
@@ -182,6 +196,8 @@ void URR_UWidget_Menu_Radial::Radial_FuncShieldSelected()
     Image_Shield->UImage::SetRenderScale(FVector2D(1.0f, 1.0f));
     Image_Shield->UImage::SetRenderTranslation(FVector2D(0.0f, 0.0f));
     
+    Image_Shield_Icon->SetBrush(InBrush_Shield_Icon_Hover);
+
     FString base = "Shield\nEFFECT: Lorem Ipsum\nCOOLDOWN: ";
     //FString sCooldownValue = FString::SanitizeFloat(Cast<ARR_PlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0))->RR_AbilityComponent->fAC_Cooldown_Shield);
     FString sCooldownValue = FString::SanitizeFloat(5.0f);
@@ -205,6 +221,10 @@ void URR_UWidget_Menu_Radial::Radial_FuncShieldSelected()
     Image_ShockWave->UImage::SetBrush(InBrush_NotSelected);
     Image_BlackHole->UImage::SetBrush(InBrush_NotSelected);
     Image_Dash->UImage::SetBrush(InBrush_NotSelected);
+
+    Image_Dash_Icon->UImage::SetBrush(InBrush_Dash_Icon);
+    Image_BlackHole_Icon->UImage::SetBrush(InBrush_BlackHole_Icon);
+    Image_ShockWave_Icon->UImage::SetBrush(InBrush_ShockWave_Icon);
     
     CanvasPanel_Circle->UCanvasPanel::SetRenderTransformAngle(90.0f);
     
@@ -223,6 +243,8 @@ void URR_UWidget_Menu_Radial::Radial_FuncBlackHoleSelected()
     CanvasPanel_Blackhole->UCanvasPanel::SetRenderScale(FVector2D(1.0f, 1.0f));
     CanvasPanel_Blackhole->UCanvasPanel::SetRenderTranslation(FVector2D(0.0f, 0.0f));
     
+    Image_BlackHole_Icon->UImage::SetBrush(InBrush_BlackHole_Icon_Hover);
+
     FString base = "BlackHole\nEFFECT: Lorem Ipsum\nCOOLDOWN: ";
     //FString sCooldownValue = FString::SanitizeFloat(Cast<ARR_PlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0))->RR_AbilityComponent->fAC_Cooldown_BlackHole);
     FString sCooldownValue = FString::SanitizeFloat(15.0f);
@@ -247,6 +269,10 @@ void URR_UWidget_Menu_Radial::Radial_FuncBlackHoleSelected()
     Image_Shield->UImage::SetBrush(InBrush_NotSelected);
     Image_Dash->UImage::SetBrush(InBrush_NotSelected);
     
+    Image_Dash_Icon->UImage::SetBrush(InBrush_Dash_Icon);
+    Image_Shield_Icon->UImage::SetBrush(InBrush_Shield_Icon);
+    Image_ShockWave_Icon->UImage::SetBrush(InBrush_ShockWave_Icon);
+
     CanvasPanel_Circle->UCanvasPanel::SetRenderTransformAngle(-90.0f);
     
     Cast<ARR_PlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0))->iAbilityIndex = 1;
@@ -264,6 +290,8 @@ void URR_UWidget_Menu_Radial::Radial_FuncShockWaveSelected()
     Image_ShockWave->UImage::SetRenderScale(FVector2D(1.0f, 1.0f));
     Image_ShockWave->UImage::SetRenderTranslation(FVector2D(0.0f, 0.0f));
     
+    Image_ShockWave_Icon->UImage::SetBrush(InBrush_ShockWave_Icon_Hover);
+
     FString base = "ShockWave\nEFFECT: Lorem Ipsum\nCOOLDOWN: ";
     //FString sCooldownValue = FString::SanitizeFloat(Cast<ARR_PlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0))->RR_AbilityComponent->fAC_Cooldown_ShockWave);
     FString sCooldownValue = FString::SanitizeFloat(4.0f);
@@ -288,6 +316,10 @@ void URR_UWidget_Menu_Radial::Radial_FuncShockWaveSelected()
     Image_BlackHole->UImage::SetBrush(InBrush_NotSelected);
     Image_Shield->UImage::SetBrush(InBrush_NotSelected);
     
+    Image_Dash_Icon->UImage::SetBrush(InBrush_Dash_Icon);
+    Image_Shield_Icon->UImage::SetBrush(InBrush_Shield_Icon);
+    Image_BlackHole_Icon->UImage::SetBrush(InBrush_BlackHole_Icon);
+
     CanvasPanel_Circle->UCanvasPanel::SetRenderTransformAngle(180.0f);
     
     Cast<ARR_PlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0))->iAbilityIndex = 3;
