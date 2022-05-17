@@ -13,5 +13,9 @@ UCLASS()
 class REBELROBOT_API URR_GameInstance : public UGameInstance
 {
 	GENERATED_BODY()
+
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | GameInstance")
+	FString LevelOfReturn;
 	
 };
