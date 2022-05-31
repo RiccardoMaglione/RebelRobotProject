@@ -36,42 +36,50 @@ void URR_UWidget_Menu_Radial::Radial_HoverDelegate()
 #pragma region
 void URR_UWidget_Menu_Radial::Radial_DashHover()
 {
-    Image_Dash->SetBrush(InBrush_Dash_Selected);
-    Image_Dash_Icon->SetBrush(InBrush_Dash_Icon_Hover);
-    bHover_BlackHole_Selected = false;
-    bHover_Shield_Selected = false;
-    bHover_ShockWave_Selected = false;
-    bHover_Dash_Selected = true;
+    if (Cast<ARR_PlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0))->iAbilityIndex != 2) {
+        Image_Dash->SetBrush(InBrush_Dash_Hover);
+        Image_Dash_Icon->SetBrush(InBrush_Dash_Icon_Hover);
+        bHover_BlackHole_Selected = false;
+        bHover_Shield_Selected = false;
+        bHover_ShockWave_Selected = false;
+        bHover_Dash_Selected = true;
+    }
 }
 
 void URR_UWidget_Menu_Radial::Radial_ShieldHover()
 {
-    Image_Shield->SetBrush(InBrush_Shield_Selected);
-    Image_Shield_Icon->SetBrush(InBrush_Shield_Icon_Hover);
-    bHover_Dash_Selected = false;
-    bHover_BlackHole_Selected = false;
-    bHover_ShockWave_Selected = false;
-    bHover_Shield_Selected = true;
+    if (Cast<ARR_PlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0))->iAbilityIndex != 0) {
+        Image_Shield->SetBrush(InBrush_Shield_Hover);
+        Image_Shield_Icon->SetBrush(InBrush_Shield_Icon_Hover);
+        bHover_Dash_Selected = false;
+        bHover_BlackHole_Selected = false;
+        bHover_ShockWave_Selected = false;
+        bHover_Shield_Selected = true;
+    }
 }
 
 void URR_UWidget_Menu_Radial::Radial_BlakcHoleHover()
 {
-    Image_BlackHole->SetBrush(InBrush_BlackHole_Selected);
-    Image_BlackHole_Icon->SetBrush(InBrush_BlackHole_Icon_Hover);
-    bHover_Dash_Selected = false;
-    bHover_Shield_Selected = false;
-    bHover_ShockWave_Selected = false;
-    bHover_BlackHole_Selected = true;
+    if (Cast<ARR_PlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0))->iAbilityIndex != 1) {
+        Image_BlackHole->SetBrush(InBrush_BlackHole_Hover);
+        Image_BlackHole_Icon->SetBrush(InBrush_BlackHole_Icon_Hover);
+        bHover_Dash_Selected = false;
+        bHover_Shield_Selected = false;
+        bHover_ShockWave_Selected = false;
+        bHover_BlackHole_Selected = true;
+    }
 }
 
 void URR_UWidget_Menu_Radial::Radial_ShockWaveHover()
 {
-    Image_ShockWave->SetBrush(InBrush_ShockWave_Selected);
-    Image_ShockWave_Icon->SetBrush(InBrush_ShockWave_Icon_Hover);
-    bHover_Dash_Selected = false;
-    bHover_Shield_Selected = false;
-    bHover_BlackHole_Selected = false;
-    bHover_ShockWave_Selected = true;
+    if (Cast<ARR_PlayerCharacter>(UGameplayStatics::GetPlayerCharacter(GetWorld(), 0))->iAbilityIndex != 3) {
+        Image_ShockWave->SetBrush(InBrush_ShockWave_Hover);
+        Image_ShockWave_Icon->SetBrush(InBrush_ShockWave_Icon_Hover);
+        bHover_Dash_Selected = false;
+        bHover_Shield_Selected = false;
+        bHover_BlackHole_Selected = false;
+        bHover_ShockWave_Selected = true;
+    }
 }
 #pragma endregion Radial Hover Delegate
 
