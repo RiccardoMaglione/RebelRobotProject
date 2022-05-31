@@ -148,4 +148,13 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "RR | Radial")
 		void Radial_FuncShockWaveSelected();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FSlateBrush InBrush_Dash_Hover;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FSlateBrush InBrush_Shield_Hover;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FSlateBrush InBrush_BlackHole_Hover;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FSlateBrush InBrush_ShockWave_Hover;
+
 };
