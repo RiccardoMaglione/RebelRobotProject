@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "RR_CameraComponent.h"
 #include "RR_Ability_ActorComponent.h"
 #include "RR_UWidget_Menu_Radial.h"
 #include "RR_UWidget_Menu_Gameplay.h"
@@ -50,6 +51,9 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Ability")
 		URR_Ability_ActorComponent* RR_AbilityComponent;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR ")
+		ARR_Actor_CameraLocation* RR_CameraComponent_C;
 
 	UFUNCTION(BlueprintCallable, Category = "RR | Input")
 		void AnyKeyDelegate(FKey key);
