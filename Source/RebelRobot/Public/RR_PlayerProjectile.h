@@ -34,5 +34,5 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | PlayerProjectile")
 		float Var_DamageAOE;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | PlayerProjectile")
-		float Var_IsPenetrationProjectile;
+		bool Var_IsPenetrationProjectile;
 };

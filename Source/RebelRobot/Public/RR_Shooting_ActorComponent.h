@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "Engine/Engine.h"
+#include "RR_CameraComponent.h"
 #include "RR_PlayerProjectile.h"
 #include "FMODBlueprintStatics.h"
 #include "Animation/AnimInstance.h"
@@ -109,7 +111,7 @@ public:
 		TArray<FWeaponStructCode> WSC;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Shooting | Struct")
-		bool CanShoot;
+		bool CanShoot = true;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Shooting | Struct")
 		bool InRecharge;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Shooting | Struct")
@@ -134,15 +136,15 @@ public:
 
 
 	UFUNCTION(BlueprintCallable, Category = "RR | Shooting")
-		void Func_Shotgun(int IndexWeaponStruct, USkeletalMeshComponent* meshPlayer);
+		void Func_Shotgun(int IndexWeaponStruct, USkeletalMeshComponent* meshPlayer, URR_CameraComponent* CamComp);
 	UFUNCTION(BlueprintCallable, Category = "RR | Shooting")
-		void Func_Normal(int IndexWeaponStruct, USkeletalMeshComponent* meshPlayer);
+		void Func_Normal(int IndexWeaponStruct, URR_CameraComponent* CamComp);
 	UFUNCTION(BlueprintCallable, Category = "RR | Shooting")
-		void Func_TypeShooting(int IndexWeaponStruct, USkeletalMeshComponent* meshPlayer);
+		void Func_TypeShooting(int IndexWeaponStruct, USkeletalMeshComponent* meshPlayer, URR_CameraComponent* CamComp);
 	UFUNCTION(BlueprintCallable, Category = "RR | Shooting")
 		void Func_DecreaseAmmo(int IndexWeaponStruct);
 	UFUNCTION(BlueprintCallable, Category = "RR | Shooting")
-		void Func_ShootingProjectileV2(int IndexWeaponStruct, USkeletalMeshComponent* meshPlayer);
+		void Func_ShootingProjectileV2(int IndexWeaponStruct, USkeletalMeshComponent* meshPlayer, URR_CameraComponent* CamComp);
 
 
 
@@ -150,7 +152,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "RR | Shooting")
 		void Func_ResetActualProjectileInBarrage(int IndexWeaponStruct);		//Controllare se lasciarlo in tick o utilizzare un observer
 	UFUNCTION(BlueprintCallable, Category = "RR | Shooting")
-		void Func_FirstPartOfShooting(int IndexWeaponStruct, USkeletalMeshComponent* meshPlayer);					//Controllare se lasciarlo in tick o utilizzare un observer
+		void Func_FirstPartOfShooting(int IndexWeaponStruct, USkeletalMeshComponent* meshPlayer, URR_CameraComponent* CamComp);					//Controllare se lasciarlo in tick o utilizzare un observer
 
 
 	UFUNCTION(BlueprintCallable, Category = "RR | Shooting")
