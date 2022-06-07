@@ -2,6 +2,9 @@
 
 #pragma once
 
+#include "Engine/Engine.h"
+#include "RR_CameraComponent.h"
+#include "RR_PlayerProjectile.h"
 #include "FMODBlueprintStatics.h"
 #include "Animation/AnimInstance.h"
 #include "RR_PlayerCharacter.h"
@@ -72,13 +75,17 @@ struct FWeaponStructCode
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Shooting | Struct")
 		float DamageAOE;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Shooting | Struct")
-		AActor* PlayerBullet;
+		TSubclassOf<ARR_PlayerProjectile> PlayerBullet;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Shooting | Struct")
 		AActor* EnemyBullet;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Shooting | Struct")
 		UFMODEvent* FModEventSound;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Shooting | Struct")
 		bool IsPenetrationBullet;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Shooting | Struct")
+		bool CanUseWeapon;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Shooting | Struct")
+		int RechargeProjectileInWeapon;
 };
 
 
@@ -104,7 +111,7 @@ public:
 		TArray<FWeaponStructCode> WSC;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Shooting | Struct")
-		bool CanShoot;
+		bool CanShoot = true;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Shooting | Struct")
 		bool InRecharge;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Shooting | Struct")
@@ -121,17 +128,23 @@ public:
 		UAnimMontage* MontageToPlay_Recharge;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Shooting | Struct")
 		UFMODEvent* FModEventRechargeSound;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Shooting | Struct")
+		UFMODEvent* FModEventRifle;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Shooting | Struct")
+		TSubclassOf<UCameraShakeBase> shakeCam;
+
 
 	UFUNCTION(BlueprintCallable, Category = "RR | Shooting")
-		void Func_Shotgun();
+		void Func_Shotgun(int IndexWeaponStruct, USkeletalMeshComponent* meshPlayer, URR_CameraComponent* CamComp);
 	UFUNCTION(BlueprintCallable, Category = "RR | Shooting")
-		void Func_Normal();
+		void Func_Normal(int IndexWeaponStruct, URR_CameraComponent* CamComp);
 	UFUNCTION(BlueprintCallable, Category = "RR | Shooting")
-		void Func_TypeShooting(int IndexWeaponStruct);
+		void Func_TypeShooting(int IndexWeaponStruct, USkeletalMeshComponent* meshPlayer, URR_CameraComponent* CamComp);
 	UFUNCTION(BlueprintCallable, Category = "RR | Shooting")
 		void Func_DecreaseAmmo(int IndexWeaponStruct);
 	UFUNCTION(BlueprintCallable, Category = "RR | Shooting")
-		void Func_ShootingProjectileV2(int IndexWeaponStruct);
+		void Func_ShootingProjectileV2(int IndexWeaponStruct, USkeletalMeshComponent* meshPlayer, URR_CameraComponent* CamComp);
 
 
 
@@ -139,7 +152,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "RR | Shooting")
 		void Func_ResetActualProjectileInBarrage(int IndexWeaponStruct);		//Controllare se lasciarlo in tick o utilizzare un observer
 	UFUNCTION(BlueprintCallable, Category = "RR | Shooting")
-		void Func_FirstPartOfShooting(int IndexWeaponStruct);					//Controllare se lasciarlo in tick o utilizzare un observer
+		void Func_FirstPartOfShooting(int IndexWeaponStruct, USkeletalMeshComponent* meshPlayer, URR_CameraComponent* CamComp);					//Controllare se lasciarlo in tick o utilizzare un observer
 
 
 	UFUNCTION(BlueprintCallable, Category = "RR | Shooting")
