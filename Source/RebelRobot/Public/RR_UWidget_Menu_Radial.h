@@ -113,6 +113,47 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
 		class UTextBlock* TextBlock_Ability;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FVector2D ScaleSelected = FVector2D(1.0f, 1.0f);
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FVector2D ScaleHover = FVector2D(1.0f, 1.0f);
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FVector2D ScaleUnhover = FVector2D(1.0f, 1.0f);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FVector2D DashTranslationSelected = FVector2D(0.0f, 0.0f);
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FVector2D BlackHoleTranslationSelected = FVector2D(0.0f, 0.0f);
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FVector2D ShieldTranslationSelected = FVector2D(0.0f, 0.0f);
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FVector2D ShockwaveTranslationSelected = FVector2D(0.0f, 0.0f);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FVector2D DashTranslationHover = FVector2D(0.0f, 0.0f);
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FVector2D BlackHoleTranslationHover = FVector2D(0.0f, 0.0f);
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FVector2D ShieldTranslationHover = FVector2D(0.0f, 0.0f);
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FVector2D ShockwaveTranslationHover = FVector2D(0.0f, 0.0f);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FVector2D DashTranslationUnhover = FVector2D(0.0f, 0.0f);
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FVector2D BlackHoleTranslationUnhover = FVector2D(0.0f, 0.0f);
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FVector2D ShieldTranslationUnhover = FVector2D(0.0f, 0.0f);
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Radial")
+		FVector2D ShockwaveTranslationUnhover = FVector2D(0.0f, 0.0f);
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
+		class UCanvasPanel* CanvasPanel_Dash;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
+		class UCanvasPanel* CanvasPanel_Shield;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (BindWidget))
+		class UCanvasPanel* CanvasPanel_Shockwave;
+
 	UFUNCTION(BlueprintCallable, Category = "RR | Radial")
 		void Radial_HoverDelegate();
 
