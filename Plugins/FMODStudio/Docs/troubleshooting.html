@@ -26,7 +26,6 @@
 <li><a href="#deployment-issues">Deployment Issues</a></li>
 <li><a href="#live-update">Live Update</a></li>
 <li><a href="#additional-logging">Additional Logging</a></li>
-<li><a href="#blueprint-only-projects">Blueprint only projects</a></li>
 </ul>
 </li>
 <li><a href="glossary.html">Glossary</a></li>
@@ -55,19 +54,9 @@ However any such changes aren't going to change the underlying Studio project, s
 <h2 id="additional-logging"><a href="#additional-logging">8.6 Additional Logging</a></h2>
 <p>To help track down problems, verbose logging can be turned on for the FMOD UE4 integration. Add the following command line to the UE4 editor:</p>
 <div class="highlight language-text"><pre><span></span>-LogCmds=&quot;LogFMOD verbose&quot;
-</pre></div>
+</pre></div></div>
 
-
-<h2 id="blueprint-only-projects"><a href="#blueprint-only-projects">8.7 Blueprint only projects</a></h2>
-<p>Packaging a blueprint only project containing FMOD for UE4 will result in an error:</p>
-<div class="highlight language-text"><pre><span></span>&quot;Plugin &#39;FMODStudio&#39; failed to load because module &#39;FMODStudio&#39; could not be found.
-</pre></div>
-
-
-<p>The only way to work around this is to add a blank code class to the project and build the resulting solution before packaging again.<br />
-This is mentioned by Epic on their forum: <a href="https://answers.unrealengine.com/questions/72781/unable-to-run-community-plugins-when-packaged.html">Unable to run plugins when packaged</a>.</p></div>
-
-<p class="manual-footer">UE4 Integration 2.01.14 (2021-12-21). &copy; 2021 Firelight Technologies Pty Ltd.</p>
+<p class="manual-footer">UE4 Integration 2.01.10 (2021-05-25). &copy; 2021 Firelight Technologies Pty Ltd.</p>
 </body>
 </html>
 
