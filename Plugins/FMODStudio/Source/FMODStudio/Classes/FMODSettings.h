@@ -323,18 +323,6 @@ public:
     /** Get the master strings bank filename. */
     FString GetMasterStringsBankFilename() const;
 
-    FString GetFullContentPath() const;
-
-    /** List of generated folder names that contain FMOD uassets. */
-    TArray<FString> GeneratedFolders = {
-        TEXT("Banks"),
-        TEXT("Buses"),
-        TEXT("Events"),
-        TEXT("Reverbs"),
-        TEXT("Snapshots"),
-        TEXT("VCAs")
-    };
-
 #if WITH_EDITOR
     /** Get the path desktop banks. */
     FString GetDesktopBankPath() const;

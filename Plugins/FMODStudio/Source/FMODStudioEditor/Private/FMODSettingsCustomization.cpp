@@ -49,11 +49,10 @@ public:
         TSharedRef<SWidget> PackagingSettingsBadWidget = MakeRow(
             "SettingsEditor.WarningIcon",
             LOCTEXT("PackagingSettingsBadText",
-                "The packaging settings for copying the FMOD bank files to staging are not correct. It is recommended that:\n"
-                " - The bank output directory for the Desktop platform (or the forced platform if set) is added to the \"Additional Non-Asset Directories To Copy\" list.\n"
-                " - That no other directory containing FMOD banks or assets is added to either the \"Additional Non-Asset Directories To Copy\" list "
-                "or the \"Additional Non-Asset Directories to Package\" list.\n"
-                " - The Generated Assets are added to the \"Additional Asset Directories to Cook\" list."
+                "The packaging settings for copying the FMOD bank files to staging are not correct. It is recommended that the bank output directory "
+                "for the Desktop platform (or the forced platform if set) is added to the \"Additional Non-Asset Directories To Copy\" list, and "
+                "that no other directory containing FMOD banks or assets is added to either the \"Additional Non-Asset Directories To Copy\" list "
+                "or the \"Additional Non-Asset Directories to Package\" list."
             ),
             LOCTEXT("FixPackagingSettings", "Fix")
         );
@@ -173,28 +172,10 @@ private:
                 }
             }
 
-            for (int i = 0; i < PackagingSettings->DirectoriesToAlwaysCook.Num();)
-            {
-                if (PackagingSettings->DirectoriesToAlwaysCook[i].Path.StartsWith(Settings.GetFullContentPath()))
-                {
-                    PackagingSettings->DirectoriesToAlwaysCook.RemoveAt(i);
-                }
-                else
-                {
-                    ++i;
-                }
-            }
-
             // Add correct entry
             FDirectoryPath BankPath;
             BankPath.Path = Settings.GetDesktopBankPath();
             PackagingSettings->DirectoriesToAlwaysStageAsNonUFS.Add(BankPath);
-            FDirectoryPath generatedFolder;
-            for (FString folder : Settings.GeneratedFolders)
-            {
-                generatedFolder.Path = Settings.GetFullContentPath() / folder;
-                PackagingSettings->DirectoriesToAlwaysCook.Add(generatedFolder);
-            }
 
             PackagingSettings->UpdateDefaultConfigFile();
         }

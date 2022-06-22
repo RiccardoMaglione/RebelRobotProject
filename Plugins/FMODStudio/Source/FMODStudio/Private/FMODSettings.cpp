@@ -91,11 +91,6 @@ FString UFMODSettings::GetMasterStringsBankFilename() const
     return MasterBankName + TEXT(".strings.bank");
 }
 
-FString UFMODSettings::GetFullContentPath() const
-{
-    return ContentBrowserPrefix;
-}
-
 #if WITH_EDITOR
 FString UFMODSettings::GetDesktopBankPath() const
 {
@@ -125,7 +120,6 @@ UFMODSettings::EProblem UFMODSettings::Check() const
     UProjectPackagingSettings* PackagingSettings = Cast<UProjectPackagingSettings>(UProjectPackagingSettings::StaticClass()->GetDefaultObject());
     bool bCorrectPathAdded = false;
     bool bOtherPathsAdded = false;
-    bool bAssetsToCookAdded = false;
 
     for (int i = 0; i < PackagingSettings->DirectoriesToAlwaysStageAsNonUFS.Num(); ++i)
     {
@@ -151,16 +145,7 @@ UFMODSettings::EProblem UFMODSettings::Check() const
         }
     }
 
-    for (int i = 0; i < PackagingSettings->DirectoriesToAlwaysCook.Num(); ++i)
-    {
-        if (PackagingSettings->DirectoriesToAlwaysCook[i].Path.StartsWith(GetFullContentPath()))
-        {
-            bAssetsToCookAdded = true;
-            break;
-        }
-    }
-
-    if (!bCorrectPathAdded || bOtherPathsAdded || !bAssetsToCookAdded)
+    if (!bCorrectPathAdded || bOtherPathsAdded)
     {
         return PackagingSettingsBad;
     }

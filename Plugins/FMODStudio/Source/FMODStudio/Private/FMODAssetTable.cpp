@@ -19,12 +19,6 @@
 #include "Misc/Paths.h"
 #include "UObject/Package.h"
 
-FFMODAssetTable::FFMODAssetTable()
-    : BankLookup(nullptr),
-      AssetLookup(nullptr)
-{
-}
-
 void FFMODAssetTable::AddReferencedObjects(FReferenceCollector& Collector)
 {
     // The garbage collector will clean up any objects which aren't referenced, doing this tells the garbage collector our lookups are referenced
@@ -43,7 +37,7 @@ void FFMODAssetTable::AddReferencedObjects(FReferenceCollector& Collector)
 void FFMODAssetTable::Load()
 {
     const UFMODSettings &Settings = *GetDefault<UFMODSettings>();
-    FString PackagePath = Settings.GetFullContentPath() / PrivateDataPath();
+    FString PackagePath = Settings.ContentBrowserPrefix + PrivateDataPath();
 
     FString PackageName = PackagePath + BankLookupName();
     UPackage *Package = CreatePackage(*PackageName);
@@ -56,18 +50,7 @@ void FFMODAssetTable::Load()
     }
     else
     {
-        TCHAR msg[] = TEXT("Failed to load bank lookup");
-        if (IsRunningCommandlet())
-        {
-            // If we're running in a commandlet (maybe we're cooking or running FMODGenerateAssets
-            // commandlet) Display a message but don't cause the build to Error out.
-            UE_LOG(LogFMOD, Display, msg);
-        }
-        else
-        {
-            // If we're running in game or in editor, log this as an Error
-            UE_LOG(LogFMOD, Error, msg);
-        }
+        UE_LOG(LogFMOD, Error, TEXT("Failed to load bank lookup"));
     }
 
     PackageName = PackagePath + AssetLookupName();
@@ -81,18 +64,7 @@ void FFMODAssetTable::Load()
     }
     else
     {
-        TCHAR msg[] = TEXT("Failed to load asset lookup");
-        if (IsRunningCommandlet())
-        {
-            // If we're running in a commandlet (maybe we're cooking or running FMODGenerateAssets
-            // commandlet) Display a message but don't cause the build to Error out.
-            UE_LOG(LogFMOD, Display, msg);
-        }
-        else
-        {
-            // If we're running in game or in editor, log this as an Error
-            UE_LOG(LogFMOD, Error, msg);
-        }
+        UE_LOG(LogFMOD, Error, TEXT("Failed to load asset lookup"));
     }
 }
 
@@ -169,11 +141,6 @@ FString FFMODAssetTable::GetMasterAssetsBankPath() const
 void FFMODAssetTable::SetLocale(const FString &LocaleCode)
 {
     ActiveLocale = LocaleCode;
-}
-
-FString FFMODAssetTable::GetLocale() const
-{
-    return ActiveLocale;
 }
 
 void FFMODAssetTable::GetAllBankPaths(TArray<FString> &Paths, bool IncludeMasterBank) const
