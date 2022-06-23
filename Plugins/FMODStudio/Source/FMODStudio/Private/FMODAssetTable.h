@@ -12,8 +12,6 @@ class UFMODBankLookup;
 class FFMODAssetTable : public FGCObject
 {
 public:
-    FFMODAssetTable();
-
     //~ FGCObject
     void AddReferencedObjects(FReferenceCollector& Collector) override;
 
@@ -24,7 +22,6 @@ public:
     FString GetMasterStringsBankPath() const;
     FString GetMasterAssetsBankPath() const;
     void SetLocale(const FString &LocaleCode);
-    FString GetLocale() const;
     void GetAllBankPaths(TArray<FString> &BankPaths, bool IncludeMasterBank) const;
 
     UFMODAsset *GetAssetByStudioPath(const FString &InStudioPath) const;
