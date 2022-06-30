@@ -15,4 +15,11 @@ class REBELROBOT_API URR_UWidget_Menu_Pause : public UUserWidget
 	GENERATED_BODY()
 
 	virtual bool Initialize();
+
+public:
+	UPROPERTY(meta = (BindWidget))
+		class UCheckBox* CheckBox_Fullscreen;
+
+	UFUNCTION()
+		void FullscreenCheckBoxClickedPause(bool isChecked);
 };

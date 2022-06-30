@@ -6,7 +6,6 @@
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/GameUserSettings.h"
 #include "Components/Slider.h"
-#include "Kismet/GameplayStatics.h"
 #include "Engine/PostProcessVolume.h"
 #include "Components/CheckBox.h"
 
