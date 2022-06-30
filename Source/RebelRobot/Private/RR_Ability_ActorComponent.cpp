@@ -82,8 +82,3 @@ float URR_Ability_ActorComponent::Func_Ability_Shield(TSubclassOf<AActor> BPShie
 	return fAC_Cooldown_Shield;
 }
 
-void URR_Ability_ActorComponent::dffddf()
-{
-	GEngine->AddOnScreenDebugMessage(-1, 10.f, FColor::Black, FString::Printf(TEXT("Bool:ddfdfsdfsdfsdfsdfdssdf")));
-}
-

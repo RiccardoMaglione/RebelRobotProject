@@ -39,6 +39,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Input")
 		int iAbilityIndex;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Input")
+		TArray<FString> LevelNameHiddenWidget;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Widget")
 		TSubclassOf<URR_UWidget_Menu_Radial> Class_BP_RadialWidget;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "RR | Widget")

@@ -59,4 +59,11 @@ void ARR_PlayerCharacter::CreateGameplayWidget()
 {
 	GameplayWidget = CreateWidget<URR_UWidget_Menu_Gameplay>(GetWorld(), Class_BP_GameplayWidget);
 	GameplayWidget->AddToViewport();
+
+	for (size_t i = 0; i < LevelNameHiddenWidget.Num(); i++)
+	{
+		if (LevelNameHiddenWidget[i] == UGameplayStatics::GetCurrentLevelName(GetWorld())){
+			GameplayWidget->SetVisibility(ESlateVisibility::Hidden);
+		}
+	}
 }

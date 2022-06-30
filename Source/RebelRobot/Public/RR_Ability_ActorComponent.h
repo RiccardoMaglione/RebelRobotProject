@@ -62,7 +62,4 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "RR | Ability")
 		float Func_Ability_Shield(TSubclassOf<AActor> BPShield);
-
-	UFUNCTION(BlueprintCallable, Category = "RR | Ability")
-		void dffddf();
 };
